@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f30b9288-a246-4361-8b21-9a9d870a9b5a" name="Changes" comment="" />
+    <list default="true" id="f30b9288-a246-4361-8b21-9a9d870a9b5a" name="Changes" comment="Models and controller" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +33,10 @@
     "accountId": "f57aa723-e24d-481a-b7ae-ef7229721ea1"
   }
 }]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/USER/RiderProjects/DEAA-TAREA-SEMANA02/DEAA-ACTIVIDAD-SEMANA02/Controllers/TaskController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/USER/RiderProjects/DEAA-TAREA-SEMANA02/DEAA-ACTIVIDAD-SEMANA02/Controllers/TaskController.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 6
@@ -49,7 +53,7 @@
     ".NET Launch Settings Profile.DEAA-ACTIVIDAD-SEMANA02: http.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Migueldev",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -113,7 +117,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1743255754430</updated>
-      <workItem from="1743255757044" duration="5190000" />
+      <workItem from="1743255757044" duration="5524000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion de task controller">
       <option name="closed" value="true" />
@@ -123,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743256955906</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Models and controller">
+      <option name="closed" value="true" />
+      <created>1743261320809</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743261320809</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +158,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Add initial project structure with views, layout, and configuration files" />
     <MESSAGE value="Creacion de task controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creacion de task controller" />
+    <MESSAGE value="Models and controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Models and controller" />
   </component>
 </project>
