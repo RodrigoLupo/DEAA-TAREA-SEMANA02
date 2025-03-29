@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Task = DEAA_ACTIVIDAD_SEMANA02.Models.Task;
+﻿
+using Microsoft.AspNetCore.Mvc;
 
 namespace DEAA_ACTIVIDAD_SEMANA02.Controllers
 {
@@ -7,74 +7,74 @@ namespace DEAA_ACTIVIDAD_SEMANA02.Controllers
     [ApiController]
     public class TaskController : ControllerBase
     {
-        private static readonly List<Task> Tarea = new();
-        
-        
+        private static List<Dictionary<string, object>> tasks = new List<Dictionary<string, object>>();
+
+        private static int contadorId = 1; 
+
         [HttpPost]
-        public IActionResult CrearTask([FromBody] Task task)
+        public IActionResult CrearTask([FromBody] Dictionary<string, object> task)
         {
-            task.StartDate = task.StartDate == default ? DateTime.Now : task.StartDate;
-            Tarea.Add(task);
+            task["Id"] = contadorId++;
+            tasks.Add(task);
             return Ok("Task registrada exitosamente.");
         }
-        
+
         [HttpGet]
         public IActionResult ObtenerTasks()
         {
-            return Ok(Tarea);
+            return Ok(tasks);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult ObtenerTask(int id)
-        {
-            var task = Tarea.FirstOrDefault(x => x.Id == id);
-            return Ok(task);
-        }
-        
         [HttpDelete("{id}")]
         public IActionResult EliminarTask(int id)
         {
-            var task = Tarea.FirstOrDefault(t => t.Id == id);
+            var task = tasks.FirstOrDefault(t => (int)t["Id"] == id);
             if (task == null) return NotFound("Task no encontrada.");
 
-            Tarea.Remove(task);
+            tasks.Remove(task);
             return Ok("Task eliminada correctamente.");
         }
-        
+
         [HttpPut("{id}")]
-        public IActionResult ReemplazarTask(int id, [FromBody] Task nuevaTask)
+        public IActionResult ReemplazarTask(int id, [FromBody] Dictionary<string, object> nuevaTask)
         {
-            var index = Tarea.FindIndex(t => t.Id == id);
+            var index = tasks.FindIndex(t => (int)t["Id"] == id);
             if (index == -1) return NotFound("Task no encontrada.");
 
-            nuevaTask.Id = id;
-            Tarea[index] = nuevaTask;
+            nuevaTask["Id"] = id;
+            tasks[index] = nuevaTask;
             return Ok("Task reemplazada correctamente.");
         }
-        
+
+
         [HttpPut("update/{id}")]
-        public IActionResult ActualizarTask(int id, [FromBody] Task taskActualizada)
+        public IActionResult ActualizarTask(int id, [FromBody] Dictionary<string, object> taskActualizada)
         {
-            var task = Tarea.FirstOrDefault(t => t.Id == id);
+            var task = tasks.FirstOrDefault(t => (int)t["Id"] == id);
             if (task == null) return NotFound("Task no encontrada.");
 
-            task.Title = taskActualizada.Title ?? task.Title;
-            task.Status = taskActualizada.Status ?? task.Status;
-            task.StartDate = taskActualizada.StartDate != default ? taskActualizada.StartDate : task.StartDate;
-            task.EndDate = taskActualizada.EndDate != default ? taskActualizada.EndDate : task.EndDate;
+            foreach (var key in taskActualizada.Keys)
+            {
+                if (key != "Id") 
+                    task[key] = taskActualizada[key];
+            }
 
             return Ok("Task actualizada correctamente.");
         }
         
         [HttpPatch("{id}")]
-        public IActionResult ActualizarStatus(int id, [FromBody] string nuevoStatus)
+        public IActionResult ActualizarCampo(int id, [FromBody] Dictionary<string, object> campoActualizado)
         {
-            var task = Tarea.FirstOrDefault(t => t.Id == id);
+            var task = tasks.FirstOrDefault(t => (int)t["Id"] == id);
             if (task == null) return NotFound("Task no encontrada.");
 
-            task.Status = nuevoStatus;
-            return Ok("Status de la Task actualizado correctamente.");
+            foreach (var key in campoActualizado.Keys)
+            {
+                if (key != "Id")
+                    task[key] = campoActualizado[key];
+            }
+
+            return Ok("Campo de Task actualizado correctamente.");
         }
     }
 }
-
