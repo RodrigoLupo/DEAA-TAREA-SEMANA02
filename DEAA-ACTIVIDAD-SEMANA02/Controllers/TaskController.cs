@@ -7,9 +7,8 @@ namespace DEAA_ACTIVIDAD_SEMANA02.Controllers
     [ApiController]
     public class TaskController : ControllerBase
     {
-        private static List<Dictionary<string, object>> tasks = new List<Dictionary<string, object>>();
+        private static readonly List<Task> Tarea = new():
 
-        private static int contadorId = 1; 
 
         [HttpPost]
         public IActionResult CrearTask([FromBody] Dictionary<string, object> task)
